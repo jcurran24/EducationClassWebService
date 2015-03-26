@@ -1,0 +1,57 @@
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.springframework:spring-context:3.2.8.RELEASE'
+    compile 'org.springframework:spring-webmvc:3.2.8.RELEASE'
+    compile 'org.apache.commons:commons-lang3:3.1'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.1'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.5.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.7'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'org.hsqldb:hsqldb:2.3.2'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.8.Final'
+    compile 'org.springframework:spring-tx:3.2.8.RELEASE'
+    compile 'org.springframework:spring-orm:3.2.8.RELEASE'
+    compile 'org.json:json:20141113'
+            
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+uploadArchives {
+    repositories {
+    	mavenDeployer {
+             repository(url: "https://ec2-52-11-55-201.us-west-2.compute.amazonaws.com:8443/nexus/content/repositories/releases") {
+             	authentication(userName: "admin", password: "admin123")
+			 }
+			 
+			 snapshotRepository(url: "https://ec2-52-11-55-201.us-west-2.compute.amazonaws.com:8443/nexus/content/repositories/snapshots") {
+        		authentication(userName: "admin", password: "admin123")
+      		}
+      		
+      		pom.project {
+        		name 'EducationClassWebService'
+        		packaging 'war'
+        		// optionally artifactId can be defined here 
+        		description 'An example demo RESTful Web Service created with Spring MVC and Hibernate.'
+        		url 'https://ec2-52-11-55-201.us-west-2.compute.amazonaws.com:8443/EducationClassWebService-1.0/'
+      		}
+      		
+      	   pom.version = "1.0.0"
+           pom.artifactId = "EducationClassWebService"
+           pom.groupId = "A"
+    	}
+    }
+}
