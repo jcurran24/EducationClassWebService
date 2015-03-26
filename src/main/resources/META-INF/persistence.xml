@@ -13,12 +13,12 @@
     
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
-      <!-- <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb"/> -->
-      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:http://localhost:80/"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb"/>
+      <!-- <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:http://localhost:80/"/> -->
       <property name="javax.persistence.jdbc.user" value="sa"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
       <property name="hibernate.archive.autodetection" value="" />
 	  <property name="hibernate.show_sql" value="true"/>
 	  <property name="hibernate.max_fetch_depth" value="3"/>
